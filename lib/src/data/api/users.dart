@@ -1,7 +1,7 @@
 import '../../core.dart';
 import '../../data.dart';
 
-abstract class UserApi {
+abstract class UsersApi {
   Future<MyResponse<List<User>>> list();
 
   Future<MyResponse<User>> get(int userId);

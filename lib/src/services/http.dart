@@ -61,4 +61,4 @@ final tioProvider = Provider(
 
 final authApiProvider = Provider<AuthApi>((ref) => throw UnimplementedError());
 
-final userApiProvider = Provider<UserApi>((ref) => throw UnimplementedError());
+final usersApiProvider = Provider<UsersApi>((ref) => throw UnimplementedError());

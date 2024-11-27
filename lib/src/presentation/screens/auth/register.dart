@@ -26,7 +26,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
     if (!_loading) {
       setState(() => _loading = true);
       try {
-        final response = await ref.read(userApiProvider).create(
+        final response = await ref.read(usersApiProvider).create(
               name: _nameController.text.trim(),
               email: _emailController.text.trim(),
               password: _passwordController.text,

@@ -13,8 +13,8 @@ void main() {
         dioBaseUrlProvider.overrideWithValue('https://api.escuelajs.co/api/v1'),
         authApiProvider
             .overrideWith((ref) => AuthHttpApi(tio: ref.read(tioProvider))),
-        userApiProvider
-            .overrideWith((ref) => UserHttpApi(tio: ref.read(tioProvider))),
+        usersApiProvider
+            .overrideWith((ref) => UsersHttpApi(tio: ref.read(tioProvider))),
       ],
       child: const MyApp(),
     ),

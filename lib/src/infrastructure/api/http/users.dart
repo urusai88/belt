@@ -2,8 +2,8 @@ import '../../../core/typedefs.dart';
 import '../../../data.dart';
 import 'base.dart';
 
-class UserHttpApi extends HttpApi implements UserApi {
-  const UserHttpApi({required super.tio});
+class UsersHttpApi extends HttpApi implements UsersApi {
+  const UsersHttpApi({required super.tio});
 
   @override
   Future<MyResponse<List<User>>> list() {
