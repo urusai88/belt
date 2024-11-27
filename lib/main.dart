@@ -13,6 +13,11 @@ void main() {
         dioBaseUrlProvider.overrideWithValue('https://api.escuelajs.co/api/v1'),
         authApiProvider
             .overrideWith((ref) => AuthHttpApi(tio: ref.read(tioProvider))),
+        categoriesApiProvider.overrideWith(
+          (ref) => CategoriesHttpApi(tio: ref.read(tioProvider)),
+        ),
+        productsApiProvider
+            .overrideWith((ref) => ProductsHttpApi(tio: ref.read(tioProvider))),
         usersApiProvider
             .overrideWith((ref) => UsersHttpApi(tio: ref.read(tioProvider))),
       ],

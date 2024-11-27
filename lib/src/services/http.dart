@@ -35,6 +35,8 @@ final tioProvider = Provider(
       jsonFactories: {
         Tokens.fromJson,
         User.fromJson,
+        Category.fromJson,
+        Product.fromJson,
       },
       errorStringFactory: (s) => s,
       errorJsonFactory: (json) {
@@ -61,4 +63,9 @@ final tioProvider = Provider(
 
 final authApiProvider = Provider<AuthApi>((ref) => throw UnimplementedError());
 
-final usersApiProvider = Provider<UsersApi>((ref) => throw UnimplementedError());
+final usersApiProvider =
+    Provider<UsersApi>((ref) => throw UnimplementedError());
+final categoriesApiProvider =
+    Provider<CategoriesApi>((ref) => throw UnimplementedError());
+final productsApiProvider =
+    Provider<ProductsApi>((ref) => throw UnimplementedError());

@@ -1,4 +1,6 @@
 export 'data/api/auth.dart';
+export 'data/api/categories.dart';
+export 'data/api/products.dart';
 export 'data/api/users.dart';
 export 'data/dto/create_user.dart';
 export 'data/dto/update_user.dart';
