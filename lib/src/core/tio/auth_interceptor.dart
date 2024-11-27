@@ -7,7 +7,7 @@ import '../../data.dart';
 import '../../services.dart';
 
 final class MyAuthInterceptor
-    extends TioAuthInterceptor<TokenResponse, String> {
+    extends TioAuthInterceptor<Tokens, String> {
   MyAuthInterceptor({
     required super.tio,
     required this.ref,
@@ -25,7 +25,7 @@ final class MyAuthInterceptor
 
   @override
   TioTokenRefreshResult getRefreshTokenResult(
-    TioSuccess<TokenResponse, String> success,
+    TioSuccess<Tokens, String> success,
   ) =>
       TioTokenRefreshResult(
         accessToken: success.result.accessToken,
@@ -37,13 +37,13 @@ final class MyAuthInterceptor
 
   @override
   Future<void> onFailureRefresh(
-    TioFailure<TokenResponse, String> failure,
+    TioFailure<Tokens, String> failure,
   ) async {
     throw Exception('!!!!!!!!onFailureRefresh!!!!!!!!');
   }
 
   @override
-  Future<TioResponse<TokenResponse, String>> refreshToken(
+  Future<TioResponse<Tokens, String>> refreshToken(
     String refreshToken,
   ) =>
       ref.read(authApiProvider).refreshToken(refreshToken: refreshToken);

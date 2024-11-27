@@ -8,11 +8,11 @@ class AuthHttpApi extends HttpApi implements AuthApi {
   const AuthHttpApi({required super.tio});
 
   @override
-  Future<MyResponse<TokenResponse>> login({
+  Future<MyResponse<Tokens>> login({
     required String email,
     required String password,
   }) =>
-      tio.post<TokenResponse>(
+      tio.post<Tokens>(
         '/auth/login',
         data: {'email': email, 'password': password},
       ).one();
@@ -33,10 +33,10 @@ class AuthHttpApi extends HttpApi implements AuthApi {
           .one();
 
   @override
-  Future<MyResponse<TokenResponse>> refreshToken({
+  Future<MyResponse<Tokens>> refreshToken({
     required String refreshToken,
   }) =>
-      tio.post<TokenResponse>(
+      tio.post<Tokens>(
         '/auth/refresh-token',
         data: {'refreshToken': refreshToken},
       ).one();

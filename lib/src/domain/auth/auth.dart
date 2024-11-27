@@ -52,7 +52,7 @@ class AuthNotifier extends AsyncNotifier<AuthState> {
   }
 
   Future<bool> authWithTokens({
-    required TokenResponse tokens,
+    required Tokens tokens,
   }) async {
     try {
       final response = await ref

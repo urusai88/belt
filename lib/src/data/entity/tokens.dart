@@ -1,16 +1,16 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:tio/tio.dart';
 
-part 'token_response.g.dart';
+part 'tokens.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
-class TokenResponse {
-  const TokenResponse({
+class Tokens {
+  const Tokens({
     required this.accessToken,
     required this.refreshToken,
   });
 
-  factory TokenResponse.fromJson(JsonMap json) => _$TokenResponseFromJson(json);
+  factory Tokens.fromJson(JsonMap json) => _$TokensFromJson(json);
 
   final String accessToken;
   final String refreshToken;

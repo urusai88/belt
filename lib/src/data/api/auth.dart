@@ -2,7 +2,7 @@ import '../../core.dart';
 import '../../data.dart';
 
 abstract class AuthApi {
-  Future<MyResponse<TokenResponse>> login({
+  Future<MyResponse<Tokens>> login({
     required String email,
     required String password,
   });
@@ -11,7 +11,7 @@ abstract class AuthApi {
     String? accessToken,
   });
 
-  Future<MyResponse<TokenResponse>> refreshToken({
+  Future<MyResponse<Tokens>> refreshToken({
     required String refreshToken,
   });
 }

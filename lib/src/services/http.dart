@@ -33,7 +33,7 @@ final tioProvider = Provider(
     dio: ref.read(dioProvider),
     factoryConfig: TioFactoryConfig(
       jsonFactories: {
-        TokenResponse.fromJson,
+        Tokens.fromJson,
         User.fromJson,
       },
       errorStringFactory: (s) => s,
