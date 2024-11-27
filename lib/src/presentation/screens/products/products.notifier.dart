@@ -9,8 +9,6 @@ final _productsProvider =
 );
 
 class ProductsScreenNotifier extends ChangeNotifier {
-  ProductsScreenNotifier();
-
   String _query = '';
   int? _categoryId;
 
