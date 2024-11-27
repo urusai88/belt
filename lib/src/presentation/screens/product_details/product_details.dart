@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../domain/products/product.dart';
+import '../../../domain.dart';
 import '../../../presentation.dart';
 
 part 'product_details.g.dart';

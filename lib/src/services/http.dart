@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tio/tio.dart';
 
-import '../core/tio/auth_interceptor.dart';
+import '../core.dart';
 import '../data.dart';
 import 'storage.dart';
 
