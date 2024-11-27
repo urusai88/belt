@@ -1,7 +1,7 @@
 part of 'products.dart';
 
 final _productScreenProvider =
-    ChangeNotifierProvider(ProductsScreenNotifier.new);
+    ChangeNotifierProvider((ref) => ProductsScreenNotifier());
 
 final _productsProvider =
     AsyncNotifierProvider<ProductsNotifier, ProductsState>(
@@ -9,9 +9,7 @@ final _productsProvider =
 );
 
 class ProductsScreenNotifier extends ChangeNotifier {
-  ProductsScreenNotifier(this.ref);
-
-  final Ref ref;
+  ProductsScreenNotifier();
 
   String _query = '';
   int? _categoryId;
