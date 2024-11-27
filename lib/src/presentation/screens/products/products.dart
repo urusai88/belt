@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../data.dart';
@@ -44,7 +45,16 @@ class ProductsScreen extends ConsumerWidget {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         _triggerProductView(ref, index);
-                        return _ProductTile(product: products.products[index]);
+                        final product = products.products[index];
+                        return GestureDetector(
+                          behavior: HitTestBehavior.translucent,
+                          onTap: () => unawaited(
+                            ProductDetailsRoute(id: product.id).push(context),
+                          ),
+                          child: _ProductTile(
+                            product: product,
+                          ),
+                        );
                       },
                       childCount: products.products.length,
                     ),
@@ -88,6 +98,12 @@ class ProductsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Список товаров'),
+        actions: [
+          IconButton(
+            onPressed: () => unawaited(context.push('/profile')),
+            icon: const Icon(Icons.account_circle_outlined),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: screenPadding / 2),

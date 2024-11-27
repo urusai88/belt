@@ -71,4 +71,10 @@ class AuthNotifier extends AsyncNotifier<AuthState> {
       throw Exception('Ошибка соединения с сервером');
     }
   }
+
+  Future<void> logout() async {
+    await accessTokenKey.delete();
+    await refreshTokenKey.delete();
+    state = const AsyncValue.data(AuthState.guest());
+  }
 }

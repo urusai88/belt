@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,38 +21,6 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   var _loading = false;
-
-  Future<void> _submit() async {
-    FocusManager.instance.primaryFocus?.unfocus();
-    if (!_loading) {
-      setState(() => _loading = true);
-      try {
-        final response = await ref.read(usersApiProvider).create(
-              name: _nameController.text.trim(),
-              email: _emailController.text.trim(),
-              password: _passwordController.text,
-              avatarUrl: 'https://picsum.photos/800',
-            );
-        response.when(
-          success: (user) async {
-            await showMessage(
-              context: context,
-              message: 'Пользователь успешно зарегистрирован',
-            );
-            if (mounted) {
-              context.go('/login');
-            }
-          },
-          failure: (error) =>
-              unawaited(showError(context: context, error: error)),
-        );
-      } finally {
-        if (mounted) {
-          setState(() => _loading = false);
-        }
-      }
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,6 +55,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
           onSubmitted: (_) => unawaited(_submit()),
         ),
         const Gap(8),
+        const Gap(8),
         IndexedStack(
           sizing: StackFit.passthrough,
           alignment: Alignment.center,
@@ -112,5 +82,42 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
         child: body,
       ),
     );
+  }
+
+  Future<void> _submit() async {
+    FocusManager.instance.primaryFocus?.unfocus();
+    if (!_loading) {
+      setState(() => _loading = true);
+      try {
+        final response = await ref.read(usersApiProvider).create(
+              name: _nameController.text.trim(),
+              email: _emailController.text.trim(),
+              password: _passwordController.text,
+              avatarUrl:
+                  'https://fastly.picsum.photos/id/971/800/800.jpg?hmac=Mu9b0yoZMM9SzBBpV-Ze2JXUwh9U-6kN8n6jArvRuFQ',
+            );
+        response.when(
+          success: (user) async {
+            await showMessage(
+              context: context,
+              message: 'Пользователь успешно зарегистрирован',
+            );
+            if (mounted) {
+              context.go('/login');
+            }
+          },
+          failure: (error) =>
+              unawaited(showError(context: context, error: error)),
+        );
+      } catch (e) {
+        if (mounted) {
+          unawaited(showError(context: context, error: 'Неизвестная ошибка'));
+        }
+      } finally {
+        if (mounted) {
+          setState(() => _loading = false);
+        }
+      }
+    }
   }
 }

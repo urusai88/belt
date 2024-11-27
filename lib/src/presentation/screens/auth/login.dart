@@ -21,13 +21,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _passwordController = TextEditingController();
   var _loading = false;
 
-  @override
-  void dispose() {
-    _passwordController.dispose();
-    _emailController.dispose();
-    super.dispose();
-  }
-
   Future<void> _submit() async {
     if (!_loading) {
       setState(() => _loading = true);
