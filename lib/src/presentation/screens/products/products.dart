@@ -137,7 +137,7 @@ class _SearchQueryField extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return TextField(
-      onSubmitted: (v) => ref.read(_productScreenProvider).query = v,
+      onSubmitted: (v) => ref.read(queryProvider.notifier).state = v,
       decoration: const InputDecoration(
         hintText: 'Поиск',
         isDense: true,
@@ -153,7 +153,7 @@ class _CategoryPicker extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesProvider);
     return DropdownButton<int>(
-      value: ref.watch(_productScreenProvider).categoryId,
+      value: ref.watch(categoryIdProvider),
       items: [
         const DropdownMenuItem(child: Text('Все')),
         for (final category in categories.requireValue)
@@ -162,7 +162,7 @@ class _CategoryPicker extends ConsumerWidget {
             child: Text(category.name),
           ),
       ],
-      onChanged: (v) => ref.read(_productScreenProvider).categoryId = v,
+      onChanged: (v) => ref.read(categoryIdProvider.notifier).state = v,
     );
   }
 }
