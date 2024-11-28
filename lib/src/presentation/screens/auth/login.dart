@@ -34,13 +34,24 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             final result = await ref
                 .read(authProvider.notifier)
                 .authWithTokens(tokens: tokens);
-            if (result && mounted) {
+            if (!mounted) {
+              return;
+            }
+            if (result) {
               context.go('/products');
+            } else {
+              unawaited(
+                showError(context: context, error: 'Неизвестная ошибка'),
+              );
             }
           },
           failure: (error) =>
               unawaited(showError(context: context, error: error)),
         );
+      } catch (error) {
+        if (mounted) {
+          unawaited(showError(context: context, error: error));
+        }
       } finally {
         setState(() => _loading = false);
       }
