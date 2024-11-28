@@ -77,7 +77,7 @@ class ProductsScreen extends ConsumerWidget {
             },
             error: (error, stackTrace) => SliverFillRemaining(
               child: Center(
-                child: Text('$error'),
+                child: Text('Произошла ошибка\n$error'),
               ),
             ),
             loading: () => const SliverFillRemaining(
